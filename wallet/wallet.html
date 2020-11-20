@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+         }
+
+        html{
+            font-family: 'roboto slab' serif;
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            overflow-x: hidden;
+            background-color: #c6e0ee;
+        }
+
+        header  img{
+            margin-top: 10%;
+            text-align: bottom right ;
+            width: 50%;
+            height: 50%;
+            display: flex;
+            float: right;
+        }
+       
+        
+        header .balance{
+            padding: 3%;
+            color: rgb(71, 71, 70);
+            margin-top: 2%;
+            margin-left: 1%;
+            margin-right: 1%;
+            top: 0;
+            background-color: #aa9898;
+            border-radius: 20px;
+        }
+        
+        header .balance #typelist{
+            margin-left: 8%;
+            list-style: none;
+            padding: 10px;
+            display: none;
+            flex-direction: column;
+        }
+        header .balance ul li a{
+            padding: 2px;
+            font-size: 1.3rem;
+            color: #2e2e2e;
+            text-decoration: none;
+        }
+        header .balance ul li a:hover{
+            color: #0c3f3c;
+        }
+
+
+        header .opt ul{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5%;
+            list-style: none;
+        }
+        header .opt ul li{
+            margin: 8%;
+        }
+        header .opt ul li a {
+            color: #dce9f0;
+            font-size: 1.5rem; 
+            background-color: rgb(15, 92, 143);
+            padding: 5% 40%;
+            cursor: pointer;
+            border: 2px solid black;
+            box-shadow: 3px 10px 7px rgba(0, 0, 0, 0.8);
+        }
+
+        header .opt ul li a:hover{
+            color: #252525;
+            background-color: rgb(31, 155, 192);
+        }
+
+
+ /*send button section*/       
+        #popsend {
+          background-color: rgba(15, 15, 15, 0.6);
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          z-index: 1;
+          display: none;
+          justify-content: center;
+          align-items: center;
+        }
+        #popsend .popup-content{
+            border-radius: 10px;
+            padding-top: 3%;
+            width: 35%;
+            height: 50%;
+            background-color:  #c6e0ee;
+            position:absolute;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        #popsend .popup-content input{
+        background-color: #dfdfdf;
+        margin: 20px auto;
+        display: block;
+        width: 50%;
+        padding: 10px;
+        }
+        #popsend .popup-content a{
+         font-size: 1.3rem;
+         color:  #efeff0;
+         background-color: #05547e;
+         border: 2px solid #000000;
+         padding: 10px 20px;
+         cursor: pointer;
+         box-shadow: 3px 10px 7px rgba(0, 0, 0, 0.8);
+        }
+        #popsend .popup-content a:hover{
+            color:  #252525;
+            background-color: #2584b8;
+        }
+        #popsend .popup-content .closeS{
+          font-size: 1.2rem;
+          position: absolute;
+          right: -12px;
+          top:-17px;
+          color: black;
+          transform: rotate(45deg);
+          cursor: pointer;
+          background-color: #c6e0ee;
+          border-radius: 50%;
+          padding: 0px 5px;
+       }
+/*deposite button section */
+       #popdeposite {
+          background-color: rgba(0, 0, 0, .6);
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          z-index: 1;
+          display: none;
+          justify-content: center;
+          align-items: center;
+        }
+        #popdeposite .popup-content{
+            border-radius: 10px;
+            padding-top: 3%;
+            width: 35%;
+            height: 50%;
+            background-color:  #c6e0ee;
+            position:absolute;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        #popdeposite .popup-content input{
+        background-color: #dfdfdf;
+        margin: 20px auto;
+        display: block;
+        width: 50%;
+        padding: 10px;
+        }
+        
+        #popdeposite .popup-content a{
+         font-size: 1.2rem;
+         color:  #e8eff3;
+         background-color: #05547e;
+         border: 2px solid #000000;
+         padding: 10px 20px;
+         cursor: pointer;
+         box-shadow: 3px 10px 7px rgba(0, 0, 0, 0.8);
+        }
+        #popdeposite .popup-content a:hover{
+            color:  #282829;
+            background-color: #2584b8;
+        }
+        #popdeposite .popup-content .closeD{
+          font-size: 1.2rem;
+          position: absolute;
+          right: -12px;
+          top:-17px;
+          color: rgb(0, 0, 0);
+          transform: rotate(45deg);
+          cursor: pointer;
+          background-color: #c6e0ee;
+          border-radius: 50%;
+          padding: 0px 5px;
+       }
+
+    
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+
+    <!--Header section..............................................-->
+    <header>
+           <img src="walletimg.png">
+      
+        <div class="balance">
+            <h2>Balance <button style="padding: 2px; color: #302f2f ;margin-left:3% ;" onclick="showHide()"><span class="fa fa-caret-down" ></span></button></h2>
+            <ul id="typelist">
+                <li><a href="#" >Ether</a></li>
+                <li><a href="#" >Bitcoin</a></li>
+                <li><a href="#" >Bitcoin Cash</a></li>
+                <li><a href="#" >USD Digital</a></li>
+            </ul>
+            <h1 id="showBalance">$ - </h1>
+        </div>
+        <div class="opt">
+        <ul>
+            <li ><a class="button" type="button" id="send">Send</a></li>
+            <li ><a class="button" type="button" id="deposite" >Deposite</a></li></li>
+        </ul>    
+    </header>
+ <!--Send amount section........................................................-->
+    <section id="popsend">
+        <div class="popup-content">
+         <p class="closeS"><b>+</b></p>
+         <input type="text" placeholder="Amount" id="sendAmount">
+         <input type="text" placeholder="To">
+          <a type="button" id="sendact" >Send</a>
+        </div>
+      </section>
+
+
+      <!--.......Deposite amount section.........................-->
+      <section id="popdeposite">
+        <div class="popup-content">
+         <p class="closeD"><b>+</b></p>
+         <input type="text" placeholder="Amount" id="depositeAmount">
+         <input type="text" placeholder="Select Account  "> 
+         <a  type="button" id="depositact">Deposite</a>
+        </div>
+      </section>
+</body>
+<script src="wlt.js"></script>
+
+<!-- ................ Hello beta arnav.....................................................................backend ka kaam.................................
+    .................Yaha 
+    ................ per
+    .................2(do)
+    .................Script
+    ................. ko
+    ................. connect
+    ................. krna 
+    .................prega
+    .................jaise telusko ne batay................................................................. jo tu krega-->
+</html>
